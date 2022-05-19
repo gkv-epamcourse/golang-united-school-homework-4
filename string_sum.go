@@ -27,13 +27,13 @@ var (
 
 func StringSum(input string) (output string, err error) {
 	if input == "" {
-		return "", errorEmptyInput
+		return "", fmt.Errorf("input string error: %w", errorEmptyInput)
 	}
 
 	input = strings.TrimLeft(strings.ReplaceAll(strings.ReplaceAll(strings.ReplaceAll(input, " ", ""), "+", " +"), "-", " -"), " ")
 	strNums := strings.Split(input, " ")
 	if len(strNums) != 2 {
-		return "", errorNotTwoOperands
+		return "", fmt.Errorf("input string error: %w", errorNotTwoOperands)
 	}
 
 	fst, err := strconv.Atoi(strNums[0])
